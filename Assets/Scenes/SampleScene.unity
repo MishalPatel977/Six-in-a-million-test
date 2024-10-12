@@ -20,7 +20,7 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0, g: 0, b: 0, a: 1}
+  m_AmbientSkyColor: {r: 0.039546236, g: 0.039546236, b: 0.039546236, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
@@ -214,7 +214,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1e7362654fe04209a2bd8301a83e622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 100
+  flashlightPowerText: {fileID: 0}
 --- !u!1 &152702596
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,14 +344,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 164236685}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1611982489}
   - {fileID: 1202911243}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 524858944}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &167917826
 GameObject:
@@ -667,12 +667,14 @@ MonoBehaviour:
   towerPrefab: {fileID: 1284891310}
   flashlight: {fileID: 692232250}
   flashlightPower: 100
-  powerDrainRate: 10
+  powerDrainAmount: 5
   powerRechargeRate: 5
   flashlightRange: 15
   towerLayer:
     serializedVersion: 2
     m_Bits: 64
+  mouseSensitivity: 2
+  uiUpdater: {fileID: 0}
 --- !u!136 &274688715
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -925,6 +927,7 @@ Transform:
   m_Children:
   - {fileID: 1411601620}
   - {fileID: 486703898}
+  - {fileID: 164236686}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &692232249
@@ -951,15 +954,15 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692232249}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 5
-  m_Range: 15
-  m_SpotAngle: 51
-  m_InnerSpotAngle: 21.80208
+  m_Range: 30
+  m_SpotAngle: 100
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
@@ -998,7 +1001,7 @@ Light:
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 1
+  m_BounceIntensity: 0
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -1014,13 +1017,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 692232249}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.1497468, y: -0.025045691, z: 0.1630507, w: 0.9748657}
-  m_LocalPosition: {x: -0.21, y: 0, z: -1.1100006}
+  m_LocalRotation: {x: 0.24204925, y: -0.036806915, z: 0.16551253, w: 0.955334}
+  m_LocalPosition: {x: -0.31, y: 0.2, z: -1.53}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 274688718}
-  m_LocalEulerAnglesHint: {x: 17.466, y: 0, z: 18.99}
+  m_LocalEulerAnglesHint: {x: 28.337, y: 0.638, z: 19.819}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1047,13 +1050,13 @@ Light:
   m_GameObject: {fileID: 705507993}
   m_Enabled: 1
   serializedVersion: 10
-  m_Type: 1
+  m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 1
-  m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.802082
+  m_Intensity: 0.2
+  m_Range: 100
+  m_SpotAngle: 120
+  m_InnerSpotAngle: 1
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
@@ -1108,13 +1111,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 54.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1224,7 +1227,7 @@ MonoBehaviour:
   player: {fileID: 274688713}
   distance: 15
   height: 8
-  sensitivity: 700
+  sensitivity: 50
 --- !u!114 &963194230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1391,7 +1394,7 @@ GameObject:
   - component: {fileID: 1089459832}
   - component: {fileID: 1089459837}
   - component: {fileID: 1089459838}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1846,6 +1849,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 168725344}
+  - {fileID: 1564165911}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1284891315
@@ -1888,10 +1892,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 2137854739}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 1564165911}
   attackInterval: 2
   isCharged: 0
-  isPrefab: 1
+  range: 10
 --- !u!1 &1384375739
 GameObject:
   m_ObjectHideFlags: 0
@@ -2221,6 +2225,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1564165910
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1564165911}
+  m_Layer: 6
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1564165911
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564165910}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.06, z: -0.22}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1284891314}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1611982488
 GameObject:
@@ -3174,7 +3209,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1089459831}
   speed: 100
-  isPrefab: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -3187,7 +3221,6 @@ SceneRoots:
   - {fileID: 1284891314}
   - {fileID: 2137854743}
   - {fileID: 524858944}
-  - {fileID: 164236686}
   - {fileID: 1453243116}
   - {fileID: 1622281309}
   - {fileID: 167917830}
